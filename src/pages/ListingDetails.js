@@ -15,10 +15,10 @@ const ListingDetails = () => {
       try {
         setLoading(true);
         setError('');
-        
+        const API = process.env.REACT_APP_API_URL;
         const [listingResponse, favoritesResponse] = await Promise.all([
-          fetch(`http://localhost:5000/api/listings/${id}`),
-          axios.get(`http://localhost:5000/api/favorites`, {
+          fetch(`${API}/listings/${id}`),
+          axios.get(`${API}/favorites`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -52,14 +52,16 @@ const ListingDetails = () => {
     const isFav = isFavorite(listingId);
     try {
       if (isFav) {
-        await axios.delete(`http://localhost:5000/api/favorites/${listingId}`, {
+        const API = process.env.REACT_APP_API_URL;
+        await axios.delete(`${API}/favorites/${listingId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         });
         setFavorites(favorites.filter((fav) => fav._id !== listingId));
       } else {
-        await axios.post(`http://localhost:5000/api/favorites/${listingId}`, {}, {
+        const API = process.env.REACT_APP_API_URL;
+        await axios.post(`${API}/favorites/${listingId}`, {}, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -109,16 +111,16 @@ const ListingDetails = () => {
       </div>
     );
   }
-
+  const API = process.env.REACT_APP_API_URL;
   const mediaItems = [
     ...(listing.images || []).map((image, index) => ({
       type: 'image',
-      src: `http://localhost:5000/${image}`,
+      src: `{API}/${image}`,
       alt: `Property image ${index + 1}`,
     })),
     ...(listing.videos || []).map((video, index) => ({
       type: 'video',
-      src: `http://localhost:5000/${video}`,
+      src: `{API}/${video}`,
       alt: `Property video ${index + 1}`,
     }))
   ];

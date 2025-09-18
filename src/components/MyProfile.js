@@ -6,13 +6,13 @@ const MyProfile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState('profile');
-
+  const API = process.env.REACT_APP_API_URL;
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         setLoading(true);
         setError('');
-        const response = await axios.get('http://localhost:5000/api/listings/profile', {
+        const response = await axios.get(`${API}/listings/profile`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },

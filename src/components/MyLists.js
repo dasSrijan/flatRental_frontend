@@ -9,6 +9,7 @@ const MyLists = () => {
   const [error, setError] = useState('');
   const [editingListingId, setEditingListingId] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
+  const API = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchMyListings = async () => {
@@ -16,7 +17,7 @@ const MyLists = () => {
       try {
         setLoading(true);
         setError('');
-        const response = await axios.get('http://localhost:5000/api/listings/my-lists', {
+        const response = await axios.get(`${API}/listings/my-lists`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -43,7 +44,7 @@ const MyLists = () => {
     const fetchMyListings = async () => {
       const token = localStorage.getItem('token');
       try {
-        const response = await axios.get('http://localhost:5000/api/listings/my-lists', {
+        const response = await axios.get(`${API}/listings/my-lists`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -62,7 +63,7 @@ const MyLists = () => {
 
     setDeletingId(id);
     try {
-      await axios.delete(`http://localhost:5000/api/listings/${id}`, {
+      await axios.delete(`${API}/listings/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -129,7 +130,7 @@ const MyLists = () => {
               <div className="card-image">
                 {listing.images && listing.images.length > 0 ? (
                   <img
-                    src={`http://localhost:5000/${listing.images[0]}`}
+                    src={`${process.env.REACT_APP_FILES_URL}/${listing.images[0]}`}
                     alt={listing.location}
                     className="listing-image"
                   />

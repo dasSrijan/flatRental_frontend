@@ -6,13 +6,14 @@ const MyListings = () => {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const API = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchListings = async () => {
       try {
         setLoading(true);
         setError("");
-        const response = await axios.get("/api/listings/my-listings", {
+        const response = await axios.get(`${API}/listings/my-listings`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
@@ -34,7 +35,7 @@ const MyListings = () => {
     }
     
     try {
-      await axios.delete(`/api/listings/${id}`, {
+      await axios.delete(`${API}/listings/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setListings(listings.filter((listing) => listing._id !== id));
@@ -96,7 +97,7 @@ const MyListings = () => {
               <div className="card-image">
                 {listing.images && listing.images.length > 0 ? (
                   <img
-                    src={`http://localhost:5000/${listing.images[0]}`}
+                    src={`${process.env.REACT_APP_FILES_URL}/${listing.images[0]}`}
                     alt={listing.title || listing.location}
                     className="listing-image"
                   />

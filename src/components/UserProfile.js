@@ -7,6 +7,7 @@ const UserProfile = ({ section }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const API = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchListings = async () => {
@@ -102,7 +103,7 @@ const UserProfile = ({ section }) => {
                     <div className="card-image">
                       {listing.images?.[0] ? (
                         <img
-                          src={`http://localhost:5000/${listing.images[0]}`}
+                          src={`{API}/${listing.images[0]}`}
                           alt={listing.title}
                         />
                       ) : (

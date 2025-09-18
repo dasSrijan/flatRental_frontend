@@ -18,13 +18,13 @@ const EditListing = () => {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
-
+  const API = process.env.React_APP_API_URL;
   useEffect(() => {
     const fetchListingDetails = async () => {
       try {
         setLoading(true);
         setError("");
-        const response = await axios.get(`/api/listings/${id}`, {
+        const response = await axios.get(`${API}/listings/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
@@ -47,7 +47,7 @@ const EditListing = () => {
     setError("");
     
     try {
-      await axios.put(`/api/listings/${id}`, listing, {
+      await axios.put(`${API}/listings/${id}`, listing, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`
         }

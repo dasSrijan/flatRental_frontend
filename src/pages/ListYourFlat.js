@@ -51,7 +51,8 @@ const ListYourFlat = () => {
     });
 
     try {
-      await axios.post('http://localhost:5000/api/listings', form, {
+      const API = process.env.REACT_APP_API_URL;
+      await axios.post(`${API}/listings`, form, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`,

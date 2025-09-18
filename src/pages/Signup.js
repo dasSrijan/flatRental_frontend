@@ -22,7 +22,8 @@ const Signup = () => {
     setErrorMessage("");
     
     try {
-      await axios.post("http://localhost:5000/api/auth/signup", user);
+      const API = process.env.REACT_APP_API_URL;
+      await axios.post(`${API}/auth/signup`, user);
       navigate("/login");
     } catch (error) {
       console.error("Signup Error:", error);

@@ -16,10 +16,10 @@ const SearchResults = () => {
       try {
         setLoading(true);
         setError('');
-        
+        const API = process.env.REACT_APP_API_URL;
         const [searchResponse, favoritesResponse] = await Promise.all([
-          fetch(`http://localhost:5000/api/listings/search?q=${query}`),
-          axios.get('http://localhost:5000/api/users/favorites', {
+          fetch(`${API}/listings/search?q=${query}`),
+          axios.get(`${API}/users/favorites`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem('token')}`
             }
@@ -55,14 +55,16 @@ const SearchResults = () => {
     const isFav = isFavorite(listingId);
     try {
       if (isFav) {
-        await axios.delete(`http://localhost:5000/api/users/favorites/${listingId}`, {
+        const API = process.env.REACT_APP_API_URL;
+        await axios.delete(`${API}/users/favorites/${listingId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
         });
         setFavorites(favorites.filter(fav => fav._id !== listingId));
       } else {
-        await axios.post(`http://localhost:5000/api/users/favorites/${listingId}`, {}, {
+        const API = process.env.REACT_APP_API_URL;
+        await axios.post(`${API}/users/favorites/${listingId}`, {}, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

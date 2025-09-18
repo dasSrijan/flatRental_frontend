@@ -13,9 +13,11 @@ function Dashboard() {
     const fetchData = async () => {
       try {
         setIsLoading(true);
+        const API = process.env.REACT_APP_API_URL;
         const [listingsResponse, favoritesResponse] = await Promise.all([
-          axios.get('http://localhost:5000/api/listings'),
-          axios.get('http://localhost:5000/api/users/favorites', {
+          // const API = process.env.REACT_APP_API_URL;
+          axios.get(`${API}/listings`),
+          axios.get(`${API}/users/favorites`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem('token')}`,
             },

@@ -6,13 +6,13 @@ const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-
+  const API = process.env.REACT_APP_API_URL;  
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
         setLoading(true);
         setError('');
-        const response = await axios.get('http://localhost:5000/api/users/favorites', {
+        const response = await axios.get(`${API}/users/favorites`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -31,7 +31,7 @@ const Favorites = () => {
 
   const handleRemoveFromFavorites = async (listingId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/users/favorites/${listingId}`, {
+      await axios.delete(`${API}/users/favorites/${listingId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
