@@ -1,0 +1,32 @@
+/* src/navbar.css */
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+    color: #fff !important;
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 1.1rem;
+    margin-left: 10px;
+    color: #f8f9fa !important;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #d4d4d4 !important;
+  }
+  
+  .navbar .btn-secondary {
+    font-size: 1.1rem;
+    background-color: #6c757d;
+    border: none;
+  }
+  
+  .navbar .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+  

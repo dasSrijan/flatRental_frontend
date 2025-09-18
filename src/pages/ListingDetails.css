@@ -1,0 +1,38 @@
+.hello{
+  height:50%;
+  width:50%;
+}
+
+/* .card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full height for vertical centering */
+/* } */ 
+
+/* .card {
+  width: 40vw;  /* Adjust width dynamically */
+  /* max-width: 500px; /* Prevent it from getting too big */
+  /* min-width: 300px; Prevent it from getting too small */
+  /* padding: 2vh; Use vh for padding */ 
+/* } **/
+
+/* .image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .image-gallery img {
+    width: 100%;
+    max-width: 200px; /* Adjust max width as needed */
+    /* height: auto;
+  }
+  
+  .video-responsive {
+    width: 100%;
+    max-width: 400px; /* Adjust max width as needed */
+    /* height: auto;
+    margin-top: 10px;
+  } */ 
+  
