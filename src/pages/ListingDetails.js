@@ -115,12 +115,12 @@ const ListingDetails = () => {
   const mediaItems = [
     ...(listing.images || []).map((image, index) => ({
       type: 'image',
-      src: `{API}/${image}`,
+      src: `${process.env.REACT_APP_FILES_URL}/${image}`,
       alt: `Property image ${index + 1}`,
     })),
     ...(listing.videos || []).map((video, index) => ({
       type: 'video',
-      src: `{API}/${video}`,
+      src: `${process.env.REACT_APP_FILES_URL}/${video}`,
       alt: `Property video ${index + 1}`,
     }))
   ];
