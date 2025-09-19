@@ -11,7 +11,7 @@ const ListingCard = ({ listing, isFavorite }) => {
     try {
       if (favorite) {
         // Remove from favorites
-        await axios.delete(`process.env.REACT_APP_API_URL/favorites/${listing._id}`, {
+        await axios.delete(`${process.env.REACT_APP_API_URL}/favorites/${listing._id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -19,7 +19,7 @@ const ListingCard = ({ listing, isFavorite }) => {
         setFavorite(false);
       } else {
         // Add to favorites
-        await axios.post(`process.env.REACT_APP_API_URL/favorites/${listing._id}`, {}, {
+        await axios.post(`${process.env.REACT_APP_API_URL}/favorites/${listing._id}`, {}, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -35,7 +35,7 @@ const ListingCard = ({ listing, isFavorite }) => {
 
   // Fallback image if none provided
   const imageUrl = listing.images && listing.images.length > 0 
-    ? `process.env.REACT_APP_FILES_URL/${listing.images[0]}`
+    ? `${process.env.REACT_APP_FILES_URL}/${listing.images[0]}`
     : 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80';
 
   return (
